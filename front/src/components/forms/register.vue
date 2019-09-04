@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    REGISTERRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+  </div>
 </template>
 
 <script>
