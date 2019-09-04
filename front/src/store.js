@@ -5,15 +5,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    keyGoogle: 'AIzaSyDEaBim7hB871nYhXS0pMG98rZSoRkoOME',
+    id: '',
     email: '',
     name: '',
     token: '',
-    currentPlace: '',
+    currentPlace: {
+      lat: '',
+      lng: '',
+    },
     lotPlace: '',
     favoritePlaces: [],
   },
   mutations: {
-    SET_LOGIN(state, { email, name, token }) {
+    SET_LOGIN(state, { id, email, name, token }) {
+      state.id = id
       state.email = email
       state.name = name
       state.token = token

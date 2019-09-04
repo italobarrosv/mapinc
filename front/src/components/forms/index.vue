@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="component">
-      <v-card class="card--base mt-8">
-        <login v-if="flagForm" />
-        <register v-else />
+      <v-card class="card__base mt-8">
+        <login class="pa-4" v-if="flagForm" />
+        <register class="pa-4" v-else />
       </v-card>
     </div>
   </div>
@@ -30,7 +30,8 @@ export default {
   justify-content center
   display flex
 
-.card--base
+.card__base
+  border-radius 18px
   min-height 320px
   min-width 320px
 </style>

@@ -16,7 +16,10 @@ const apiReqres = () =>
     timeout: 60000,
   })
 
-export const apiGetUser = data => api().get('/users/' + data)
-export const apiRegisterUser = obj => api().post('/register', obj)
-export const apiLoginUser = obj => api().post('/login', obj)
-export const apiUpdateUser = (data, obj) => api().put('/users' + data, obj)
+// ENDPOINTS -----------------------------------------------------------
+
+export const apiGetUser = data => apiReqres().get('/users/' + data)
+export const apiRegisterUser = data => apiReqres().post('/register', data)
+export const apiLoginUser = data => apiReqres().post('/login', data)
+export const apiUpdateUser = (data, param) =>
+  apiReqres().put('/users' + data, param)
