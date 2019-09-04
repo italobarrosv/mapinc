@@ -19,7 +19,7 @@ export default {
     Logo: () => import('@/components/forms/Logo.vue'),
   },
   data: () => ({
-    flagForm: true,
+    flagForm: false,
   }),
   name: 'indexForms',
 }
