@@ -43,8 +43,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    SET_LOGIN({ commit }) {
-      commit('SET_LOGIN')
+    SET_LOGIN({ commit }, object) {
+      commit('SET_LOGIN', object)
     },
     SET_FAVORITEPLACE({ commit }) {
       commit('SET_FAVORITEPLACE')

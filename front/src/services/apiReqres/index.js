@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from './store'
+import store from '@/store.js'
 const apiReqres = () =>
   axios.create({
     baseURL: 'https://reqres.in/api/',

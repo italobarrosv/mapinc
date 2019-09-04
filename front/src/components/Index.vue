@@ -1,13 +1,13 @@
 <template>
   <div class="index">
-    <forms />
+    <Forms />
   </div>
 </template>
 
 <script>
 export default {
   components: {
-    forms: () => import('@/components/forms/index.vue'),
+    Forms: () => import('@/components/forms/Index.vue'),
   },
   name: 'indexHome',
 }

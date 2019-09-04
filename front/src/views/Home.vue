@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <index />
+    <Index />
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 
 export default {
   components: {
-    index: () => import('@/components/index.vue'),
+    Index: () => import('@/components/Index.vue'),
   },
   name: 'homePage',
 }

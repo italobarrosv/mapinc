@@ -2,8 +2,9 @@
   <div>
     <div class="component">
       <v-card class="card__base mt-8">
-        <login class="pa-4" v-if="flagForm" />
-        <register class="pa-4" v-else />
+        <Logo />
+        <Login class="pa-4" v-if="flagForm" />
+        <Register class="pa-4" v-else />
       </v-card>
     </div>
   </div>
@@ -13,8 +14,9 @@
 export default {
   // OBJETIVO CRIAR BASE PARA LOGAR E CADASTRAR USUARIOS
   components: {
-    login: () => import('@/components/forms/login.vue'),
-    register: () => import('@/components/forms/register.vue'),
+    Login: () => import('@/components/forms/Login.vue'),
+    Register: () => import('@/components/forms/Register.vue'),
+    Logo: () => import('@/components/forms/Logo.vue'),
   },
   data: () => ({
     flagForm: true,

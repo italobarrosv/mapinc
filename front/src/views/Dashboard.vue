@@ -1,16 +1,21 @@
 <template>
-  <div class="dashboard">
+  <div class="dashboard-page">
     <Map />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
   components: {
-    map: () => import('@/components/dashboard/map.vue'),
+    Map: () => import('@/components/dashboard/Map.vue'),
   },
-  name: 'dashboard',
+  name: 'dashboard-page',
+  data: () => ({}),
 }
 </script>
+<style lang="stylus" scoped>
+.dashboard-page
+  background var(--grayb)
+  height 100vh
+  width 100vw
+</style>
