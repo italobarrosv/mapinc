@@ -1,0 +1,8 @@
+{
+  "singleQuote": true,
+  "editor.formatOnSave": true,
+  "semi": false,
+  "endOfLine": "auto",
+  "trailingComma": "all",
+  "jsxBracketSameLine": true
+}
