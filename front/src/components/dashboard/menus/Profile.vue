@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <v-card width="500">
-      asdopsapokdopkopskaopkdskop
-    </v-card>
+  <div class="component__card">
+    <v-card max-width="320"> </v-card>
   </div>
 </template>
 
@@ -22,4 +20,12 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+.component__card
+  display flex
+  flex-direction row
+  justify-content center
+  align-items center
+  max-width 320px
+  max-height 600px
+</style>
