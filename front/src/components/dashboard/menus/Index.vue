@@ -1,12 +1,12 @@
 <template>
   <div class="footer__component">
-    <v-footer class="footer__main">
+    <v-toolbar dense floating class="footer__main">
       <div class="menus">
         <v-btn v-for="link in links" :key="link" icon class="ma-2 btnicons">
           <i :class="link"></i>
         </v-btn>
       </div>
-    </v-footer>
+    </v-toolbar>
   </div>
 </template>
 
@@ -32,20 +32,17 @@ export default {
   font-size 2.3em
 
 .footer__main
-  width 100% !important
-  max-width 400px
-  display flex
-  justify-content center
   border-radius 8px
+  max-width 400px !important
 
 .menus
   display flex
   justify-content center
 
 .footer__component
-  display flex
-  justify-content center
-  max-height 30vh !important
+  display flex !important
+  justify-content center !important
+  // max-height 20vh !important
 
 .btnicons:nth-child(1)
   transform rotate(180deg)

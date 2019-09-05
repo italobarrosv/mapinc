@@ -1,8 +1,18 @@
 <template>
   <div>
-    <PlaceCurrent />
-    <div ref="mapf" id="map" class="map__component"></div>
-    <Menus />
+    <div class="map__component">
+      <GmapMap :center="position" :zoom="15" class="map__style">
+        <GmapMarker
+          :key="index"
+          v-for="(m, index) in markers"
+          :position="m.position"
+          :clickable="true"
+          :draggable="true"
+        />
+      </GmapMap>
+    </div>
+    <PlaceCurrent class="toolbar" />
+    <Menus class="footer" />
   </div>
 </template>
 
@@ -14,17 +24,26 @@ export default {
     Menus: () => import('@/components/dashboard/menus/Index.vue'),
   },
   name: 'Map',
-  methods: {
-    mapEndPoint() {},
-    initMap() {
-      new google.mapsMap(this.$refs.mapf.id, {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-      })
+  data: () => ({
+    center: {
+      lat: 10.0,
+      lng: 10.0,
     },
-  },
+    position: {
+      lat: 10.0,
+      lng: 10.0,
+    },
+    markers: [
+      {
+        position: {
+          lat: 12.0,
+          lng: 12.0,
+        },
+      },
+    ],
+  }),
+  methods: {},
   mounted() {
-    console.log(this.$refs.mapf.id, 'resfsssssssssssssssss')
     // this.mapEndPoint()
   },
 }
@@ -32,6 +51,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
+.toolbar
+  position absolute
+  left 50%
+
+.footer
+  position absolute
+  left 50%
+  bottom 0
+
 .map__component
-  height 85vh
+  position absolute
+  height 100vh
+  width 100vw
+
+.map__style
+  height 100%
+  width 100%
 </style>

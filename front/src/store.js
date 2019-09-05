@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    keyGoogle: 'AIzaSyDEaBim7hB871nYhXS0pMG98rZSoRkoOME',
+    keyGoogle: '',
     id: '',
     email: '',
     name: '',

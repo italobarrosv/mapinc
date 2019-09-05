@@ -23,7 +23,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
 .placecurrent__component
-  position relative !important
   display flex !important
   justify-content center !important
 
