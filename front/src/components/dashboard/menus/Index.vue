@@ -13,7 +13,7 @@
         </v-btn>
       </div>
     </v-toolbar>
-    <v-dialog v-model="dialogProfile">
+    <v-dialog v-model="dialogProfile" max-width="300">
       <Profile :dialog-profile="dialogProfile" />
     </v-dialog>
   </div>

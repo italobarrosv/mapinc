@@ -8,7 +8,7 @@
         <div>
           <v-btn
             class="btn__register"
-            outline
+            outlined
             @click="treatedDateFilterBtnChoose"
             >{{ flagFormBtn }}</v-btn
           >

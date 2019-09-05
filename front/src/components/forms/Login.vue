@@ -32,8 +32,8 @@ export default {
           console.log(res, 'RESPOSTA')
           this.$store.dispatch('SET_LOGIN', {
             id: 2,
-            email: 'Resposta Email',
-            name: 'Resposta nome',
+            email: 'Email no Store',
+            name: 'Nome no Store',
             token: res.data.token,
           })
           this.$router.push({ name: 'dashboard' })
