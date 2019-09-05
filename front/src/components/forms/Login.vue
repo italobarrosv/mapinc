@@ -15,6 +15,7 @@
 
 <script>
 import { apiLoginUser } from '@/services/apiReqres/'
+import { mapActions } from 'vuex'
 export default {
   // OBJETIVO LOGAR USUARIO NA APLICACAO
   components: {},
@@ -26,6 +27,9 @@ export default {
     },
   }),
   methods: {
+    ...mapActions({
+      SNACKBAR: 'SET_SNACKBAR',
+    }),
     login() {
       apiLoginUser(this.auth)
         .then(res => {
@@ -35,6 +39,12 @@ export default {
             email: 'Email no Store',
             name: 'Nome no Store',
             token: res.data.token,
+          })
+          this.SNACKBAR({
+            open: true,
+            timeout: 4000,
+            message: `Bem vindo`,
+            color: 'success',
           })
           this.$router.push({ name: 'dashboard' })
         })

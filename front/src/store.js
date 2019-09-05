@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    snackbar: false,
     keyGoogle: '',
     id: '',
     email: '',
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     favoritePlaces: [],
   },
   mutations: {
+    SET_SNACKBAR(state, { message, open, timeout, color }) {
+      state.snackbar = { message, open, timeout, color }
+    },
     SET_LOGIN(state, { id, email, name, token }) {
       state.id = id
       state.email = email
@@ -43,6 +47,19 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    SET_SNACKBAR({ commit }, { message, open = false, timeout, color }) {
+      commit('SET_SNACKBAR', { message, open, timeout, color })
+      setTimeout(
+        () =>
+          commit('SET_SNACKBAR', {
+            message,
+            open: false,
+            timeout,
+            color,
+          }),
+        timeout,
+      )
+    },
     SET_LOGIN({ commit }, object) {
       commit('SET_LOGIN', object)
     },
@@ -57,6 +74,11 @@ export default new Vuex.Store({
     },
     SET_LOGOUT({ commit }) {
       commit('SET_LOGOUT')
+    },
+  },
+  getters: {
+    GET_SNACKBAR(state) {
+      return state.snackbar
     },
   },
 })
