@@ -6,9 +6,12 @@
         <Login class="pa-4" v-if="flagForm" />
         <Register class="pa-4" v-else />
         <div>
-          <v-btn class="btn__register" @click="treatedDateFilterBtnChoose">{{
-            flagFormBtn
-          }}</v-btn>
+          <v-btn
+            class="btn__register"
+            outline
+            @click="treatedDateFilterBtnChoose"
+            >{{ flagFormBtn }}</v-btn
+          >
         </div>
       </v-card>
     </div>

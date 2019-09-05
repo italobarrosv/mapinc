@@ -2,26 +2,50 @@
   <div class="footer__component">
     <v-toolbar dense floating class="footer__main">
       <div class="menus">
-        <v-btn v-for="link in links" :key="link" icon class="ma-2 btnicons">
-          <i :class="link"></i>
+        <v-btn
+          v-for="(m, position) in links"
+          :key="position"
+          icon
+          class="ma-2 btnicons"
+          @click="callComponents(m.action)"
+        >
+          <i :class="m.icon"></i>
         </v-btn>
       </div>
     </v-toolbar>
+    <v-dialog v-model="dialogProfile">
+      <Profile :dialog-profile="dialogProfile" />
+    </v-dialog>
   </div>
 </template>
 
 <script>
 export default {
   // OBJETIVO VISUALIZAR MENU DESLOGAR E CHAMAR OUTROS COMPONENTS UTILIZANDO O MENU
-  components: {},
+  components: {
+    Profile: () => import('@/components/dashboard/menus/Profile.vue'),
+  },
   name: 'Menus',
   data: () => ({
+    dialogProfile: false,
     links: [
-      'fas fa-sign-out-alt icon',
-      'fas fa-star bicon',
-      'fas fa-user icon',
+      {
+        icon: 'fas fa-sign-out-alt icon',
+        action: 'callComponentLogout',
+      },
+      { icon: 'fas fa-star bicon', action: 'callComponentFavorite' },
+      { icon: 'fas fa-user icon', action: 'callComponentProfile' },
     ],
   }),
+  methods: {
+    callComponents(val) {
+      switch (val) {
+        case 'callComponentProfile':
+          this.dialogProfile = true
+          break
+      }
+    },
+  },
 }
 </script>
 <style scoped lang="stylus">
@@ -42,7 +66,6 @@ export default {
 .footer__component
   display flex !important
   justify-content center !important
-  // max-height 20vh !important
 
 .btnicons:nth-child(1)
   transform rotate(180deg)
