@@ -18,6 +18,7 @@ const apiGoogle = () =>
 
 // ENDPOINTS -----------------------------------------------------------
 
+export const apiGetMap = () => apiGoogle().get(`js?key=${store.state.key}&callback=initMap`)
 export const apiGetNearbyPlaces = data =>
   apiGoogle().get('/place/nearbysearch', data)
 export const apiGetDetailPlaces = data =>

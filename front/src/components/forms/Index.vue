@@ -5,6 +5,11 @@
         <Logo />
         <Login class="pa-4" v-if="flagForm" />
         <Register class="pa-4" v-else />
+        <div>
+          <v-btn class="btn__register" @click="treatedDateFilterBtnChoose">{{
+            flagFormBtn
+          }}</v-btn>
+        </div>
       </v-card>
     </div>
   </div>
@@ -13,15 +18,29 @@
 <script>
 export default {
   // OBJETIVO CRIAR BASE PARA LOGAR E CADASTRAR USUARIOS
+  name: 'indexForms',
   components: {
     Login: () => import('@/components/forms/Login.vue'),
     Register: () => import('@/components/forms/Register.vue'),
     Logo: () => import('@/components/forms/Logo.vue'),
   },
   data: () => ({
-    flagForm: false,
+    flagForm: true,
+    flagFormBtn: 'CADASTRAR',
   }),
-  name: 'indexForms',
+  methods: {
+    treatedDateFilterBtnChoose() {
+      this.flagForm = !this.flagForm
+      switch (this.flagForm) {
+        case true:
+          return (this.flagFormBtn = 'CADASTRAR')
+        case false:
+          console.log('entrou aqui')
+          return (this.flagFormBtn = 'JA POSSUO CONTA')
+      }
+    },
+  },
+  mounted() {},
 }
 </script>
 
