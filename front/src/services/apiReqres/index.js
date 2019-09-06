@@ -21,5 +21,4 @@ const apiReqres = () =>
 export const apiGetUser = data => apiReqres().get('/users/' + data)
 export const apiRegisterUser = data => apiReqres().post('/register', data)
 export const apiLoginUser = data => apiReqres().post('/login', data)
-export const apiUpdateUser = (data, param) =>
-  apiReqres().put('/users' + data, param)
+export const apiUpdateUser = data => apiReqres().put('/users' + data)

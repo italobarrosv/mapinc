@@ -15,6 +15,7 @@
 
 <script>
 import { apiLoginUser } from '@/services/apiReqres/'
+import { mapActions } from 'vuex'
 export default {
   // OBJETIVO LOGAR USUARIO NA APLICACAO
   components: {},
@@ -22,24 +23,39 @@ export default {
   data: () => ({
     auth: {
       email: 'eve.holt@reqres.in',
-      password: 'cityslicka',
+      password: '',
     },
   }),
   methods: {
+    ...mapActions({
+      SNACKBAR: 'SET_SNACKBAR',
+    }),
     login() {
       apiLoginUser(this.auth)
         .then(res => {
           console.log(res, 'RESPOSTA')
-          this.$store.dispatch('SET_LOGIN', {
+          this.$store.dispatch('SET_USER', {
             id: 2,
-            email: 'Resposta Email',
-            name: 'Resposta nome',
+            email: 'Email no Store',
+            name: 'Nome no Store',
             token: res.data.token,
+          })
+          this.SNACKBAR({
+            open: true,
+            timeout: 10000,
+            message: `Bem vindo`,
+            color: `teal`,
           })
           this.$router.push({ name: 'dashboard' })
         })
         .catch(err => {
           console.log(err)
+          this.SNACKBAR({
+            open: true,
+            timeout: 10000,
+            message: `Dados Invalidos`,
+            color: `danger`,
+          })
         })
         .finally(() => {
           console.log('finally')

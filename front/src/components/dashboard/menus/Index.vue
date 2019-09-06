@@ -1,27 +1,69 @@
 <template>
   <div class="footer__component">
-    <v-footer class="footer__main">
+    <v-toolbar dense floating class="footer__main">
       <div class="menus">
-        <v-btn v-for="link in links" :key="link" icon class="ma-2 btnicons">
-          <i :class="link"></i>
+        <v-btn
+          v-for="(m, position) in links"
+          :key="position"
+          icon
+          class="ma-2 btnicons"
+          @click="callComponents(m.action)"
+        >
+          <i :class="m.icon"></i>
         </v-btn>
       </div>
-    </v-footer>
+    </v-toolbar>
+    <v-dialog dark v-model="dialogProfile" max-width="320">
+      <Profile :dialog-profile="dialogProfile" />
+    </v-dialog>
+    <v-dialog dark v-model="dialogFavorite" max-width="320">
+      <Favorite :dialog-favorite="dialogFavorite" />
+    </v-dialog>
   </div>
 </template>
 
 <script>
 export default {
   // OBJETIVO VISUALIZAR MENU DESLOGAR E CHAMAR OUTROS COMPONENTS UTILIZANDO O MENU
-  components: {},
+  components: {
+    Profile: () => import('@/components/dashboard/menus/Profile.vue'),
+    Favorite: () => import('@/components/dashboard/menus/Favorite.vue'),
+  },
   name: 'Menus',
   data: () => ({
+    dialogProfile: false,
+    dialogFavorite: false,
     links: [
-      'fas fa-sign-out-alt icon',
-      'fas fa-star bicon',
-      'fas fa-user icon',
+      {
+        icon: 'fas fa-sign-out-alt icon',
+        action: 'callComponentLogout',
+      },
+      { icon: 'fas fa-star bicon', action: 'callComponentFavorite' },
+      { icon: 'fas fa-user icon', action: 'callComponentProfile' },
     ],
   }),
+  methods: {
+    logout() {
+      this.$store.dispatch('SET_LOGOUT')
+      setTimeout(() => {
+        this.$router.push({ name: 'homepage' })
+        window.location.reload()
+      }, 2000)
+    },
+    callComponents(val) {
+      switch (val) {
+        case 'callComponentProfile':
+          this.dialogProfile = true
+          break
+        case 'callComponentLogout':
+          this.logout()
+          break
+        case 'callComponentFavorite':
+          this.dialogFavorite = true
+          break
+      }
+    },
+  },
 }
 </script>
 <style scoped lang="stylus">
@@ -32,20 +74,16 @@ export default {
   font-size 2.3em
 
 .footer__main
-  width 100% !important
-  max-width 400px
-  display flex
-  justify-content center
   border-radius 8px
+  max-width 400px !important
 
 .menus
   display flex
   justify-content center
 
 .footer__component
-  display flex
-  justify-content center
-  max-height 30vh !important
+  display flex !important
+  justify-content center !important
 
 .btnicons:nth-child(1)
   transform rotate(180deg)

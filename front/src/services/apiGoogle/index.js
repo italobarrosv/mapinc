@@ -1,12 +1,11 @@
 import axios from 'axios'
-import store from './store'
+// import store from './../../store'
 const apiGoogle = () =>
   axios.create({
     baseURL: 'https://maps.googleapis.com/maps/api/',
-    // headers: {
-    //   'X-Requested-With': 'XML HttpRequest',
-    //   Authorization: `Bearer${store.state.token}`,
-    // },
+    headers: {
+      'X-Requested-With': 'XML HttpRequest',
+    },
     transformResponse: [
       data => {
         data = JSON.parse(data)
@@ -19,6 +18,6 @@ const apiGoogle = () =>
 // ENDPOINTS -----------------------------------------------------------
 
 export const apiGetNearbyPlaces = data =>
-  apiGoogle().get('/place/nearbysearch', data)
+  apiGoogle().get('/place/nearbysearch', { params: { ...data } })
 export const apiGetDetailPlaces = data =>
   apiGoogle().get('/place/details/', data)
