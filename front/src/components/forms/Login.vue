@@ -23,7 +23,7 @@ export default {
   data: () => ({
     auth: {
       email: 'eve.holt@reqres.in',
-      password: 'cityslicka',
+      password: '',
     },
   }),
   methods: {
@@ -50,6 +50,12 @@ export default {
         })
         .catch(err => {
           console.log(err)
+          this.SNACKBAR({
+            open: true,
+            timeout: 10000,
+            message: `Dados Invalidos`,
+            color: `danger`,
+          })
         })
         .finally(() => {
           console.log('finally')

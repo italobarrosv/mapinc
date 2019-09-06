@@ -15,11 +15,13 @@
         type="password"
         v-model="register.password"
         label="Senha"
+        :rules="rulePassword"
         required
       ></v-text-field>
       <v-text-field
         type="password"
         v-model="register.repassword"
+        :rules="rulePassword"
         label="Confirmar Senha"
         required
       ></v-text-field>
@@ -45,6 +47,14 @@ export default {
       repassword: 'pistol',
     },
   }),
+  computed: {
+    rulePassword() {
+      return [
+        this.register.password === this.register.repassword ||
+          `Senha Está diferente`,
+      ]
+    },
+  },
   methods: {
     ...mapActions({
       SNACKBAR: 'SET_SNACKBAR',

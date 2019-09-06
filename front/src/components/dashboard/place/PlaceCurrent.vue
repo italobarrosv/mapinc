@@ -27,7 +27,7 @@ export default {
   },
   name: 'CurrentPlace',
   data: () => ({
-    dialogPlaceCard: true,
+    dialogPlaceCard: false,
     searchPlace: '',
     places: [],
     rate: 0,
