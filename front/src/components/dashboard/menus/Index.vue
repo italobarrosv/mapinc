@@ -16,6 +16,9 @@
     <v-dialog dark v-model="dialogProfile" max-width="320">
       <Profile :dialog-profile="dialogProfile" />
     </v-dialog>
+    <v-dialog dark v-model="dialogFavorite" max-width="320">
+      <Favorite :dialog-favorite="dialogFavorite" />
+    </v-dialog>
   </div>
 </template>
 
@@ -24,10 +27,12 @@ export default {
   // OBJETIVO VISUALIZAR MENU DESLOGAR E CHAMAR OUTROS COMPONENTS UTILIZANDO O MENU
   components: {
     Profile: () => import('@/components/dashboard/menus/Profile.vue'),
+    Favorite: () => import('@/components/dashboard/menus/Favorite.vue'),
   },
   name: 'Menus',
   data: () => ({
     dialogProfile: false,
+    dialogFavorite: false,
     links: [
       {
         icon: 'fas fa-sign-out-alt icon',
@@ -52,6 +57,9 @@ export default {
           break
         case 'callComponentLogout':
           this.logout()
+          break
+        case 'callComponentFavorite':
+          this.dialogFavorite = true
           break
       }
     },

@@ -11,7 +11,7 @@
         <v-icon>my_location</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-dialog dark v-model="dialogPlaceCard" max-width="320">
+    <v-dialog dark v-model="dialogPlaceCard" max-width="344">
       <PlaceCard :dialog-place-card="dialogPlaceCard" />
     </v-dialog>
   </div>
@@ -27,7 +27,7 @@ export default {
   },
   name: 'CurrentPlace',
   data: () => ({
-    dialogPlaceCard: false,
+    dialogPlaceCard: true,
     searchPlace: '',
     places: [],
     rate: 0,
