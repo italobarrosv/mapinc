@@ -12,7 +12,7 @@
       </v-btn>
     </v-toolbar>
     <v-dialog dark v-model="dialogPlaceCard" max-width="344">
-      <PlaceCard :dialog-place-card="dialogPlaceCard" />
+      <PlaceCard :dialog-place-card="dialogPlaceCard" :data-place="places" />
     </v-dialog>
   </div>
 </template>
@@ -30,6 +30,10 @@ export default {
     dialogPlaceCard: false,
     searchPlace: '',
     places: [],
+    obj: {
+      name: 'kevin place',
+      info: 'info sobre o place',
+    },
     rate: 0,
     comment: '',
   }),
@@ -53,11 +57,14 @@ export default {
           console.log(err)
         })
         .finally(() => {
+          this.dialogPlaceCard = true
           console.log('FINAL')
         })
     },
     fnMarkPlace() {
       console.log('MARK')
+      // this.places.push()
+      this.places = [...this.places, {meuobje}]
     },
   },
   watch: {

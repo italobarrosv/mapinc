@@ -16,7 +16,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
 .index
-  background url('~@/assets/16.jpg')
+  background-image url('~@/assets/16.jpg')
+  background-repeat no-repeat
+  background-color gold
+  background-position center
+  background-size cover
   height 100vh
   width 100vw
 </style>

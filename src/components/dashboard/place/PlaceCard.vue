@@ -5,16 +5,20 @@
       <v-card-text>Informations</v-card-text>
       <div class="box__text">
         <v-text-field
+          dark
           class="text__style"
+          v-model="comment"
           label="comentario sobre"
         ></v-text-field>
         <v-text-field
+          v-model="rating"
+          dark
           class="text__style"
           label="Que Nota você dá?"
         ></v-text-field>
       </div>
       <v-card-actions>
-        <v-btn class="btn__save">Salvar como favorito</v-btn>
+        <v-btn @click="avaliation" class="btn__save">Salvar como favorito</v-btn>
       </v-card-actions>
     </v-card>
   </div>
@@ -24,10 +28,21 @@
 export default {
   // OBJETIVO MOSTRAR DADOS DO LUGAR UTILIZANDO CARD AVALIAR LUGAR
   components: {},
+  props: {
+    type: Object,
+    required: true,
+    default: () => ({})
+  },
   data: () => ({
-    rating: 1,
+    rating: '',
+    comment: '',
   }),
   name: 'CardPlace',
+  methods: {
+    avaliation() {
+
+    }
+  }
 }
 </script>
 
