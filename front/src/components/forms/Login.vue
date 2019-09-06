@@ -34,7 +34,7 @@ export default {
       apiLoginUser(this.auth)
         .then(res => {
           console.log(res, 'RESPOSTA')
-          this.$store.dispatch('SET_LOGIN', {
+          this.$store.dispatch('SET_USER', {
             id: 2,
             email: 'Email no Store',
             name: 'Nome no Store',
@@ -42,9 +42,9 @@ export default {
           })
           this.SNACKBAR({
             open: true,
-            timeout: 4000,
+            timeout: 10000,
             message: `Bem vindo`,
-            color: 'success',
+            color: `teal`,
           })
           this.$router.push({ name: 'dashboard' })
         })

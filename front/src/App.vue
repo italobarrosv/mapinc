@@ -8,7 +8,7 @@
       vertical
     >
       {{ GET_SNACKBAR.message }}
-      <v-btn dark text @click="SET_SNACKBAR({ open: false })">
+      <v-btn text @click="SET_SNACKBAR({ open: false })">
         Close
       </v-btn>
     </v-snackbar>

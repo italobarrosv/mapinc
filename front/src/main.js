@@ -13,15 +13,17 @@ Vue.use(VueGoogleMaps, {
   },
 })
 Vue.config.productionTip = false
-Vue.use(Vuetify, {
+Vue.use(Vuetify)
+
+export default new Vuetify({
   theme: {
-    primary: colors.teal.accent4,
-    accent: colors.amber.accent4,
-    secondary: colors.blueGrey.darken4,
-    info: colors.lightBlue.accent3,
-    error: colors.red.darken2,
-    warning: colors.deepOrange.accent3,
-    success: colors.teal.accent3,
+    themes: {
+      light: {
+        primary: colors.red.darken1, // #E53935
+        secondary: colors.red.lighten4, // #FFCDD2
+        accent: colors.indigo.base, // #3F51B5
+      },
+    },
   },
 })
 

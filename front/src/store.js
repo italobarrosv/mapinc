@@ -22,7 +22,7 @@ export default new Vuex.Store({
     SET_SNACKBAR(state, { message, open, timeout, color }) {
       state.snackbar = { message, open, timeout, color }
     },
-    SET_LOGIN(state, { id, email, name, token }) {
+    SET_USER(state, { id, email, name, token }) {
       state.id = id
       state.email = email
       state.name = name
@@ -60,8 +60,8 @@ export default new Vuex.Store({
         timeout,
       )
     },
-    SET_LOGIN({ commit }, object) {
-      commit('SET_LOGIN', object)
+    SET_USER({ commit }, object) {
+      commit('SET_USER', object)
     },
     SET_FAVORITEPLACE({ commit }) {
       commit('SET_FAVORITEPLACE')
