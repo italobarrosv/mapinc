@@ -11,10 +11,12 @@
           label="comentario sobre"
         ></v-text-field>
         <v-text-field
+          :rules="ruleRating"
           v-model="rating"
+          type="number"
           dark
           class="text__style"
-          label="Que Nota você dá?"
+          label="Que Nota você dá de 0 à 5?"
         ></v-text-field>
       </div>
       <v-card-actions>
@@ -39,7 +41,7 @@ export default {
     },
   },
   data: () => ({
-    rating: '',
+    rating: Number,
     comment: '',
     result: {},
   }),
@@ -49,19 +51,28 @@ export default {
       SNACKBAR: 'SET_SNACKBAR',
     }),
     avaliation() {
-      this.result = {
-        rating: this.rating,
-        comment: this.comment,
-        ...this.dataPlaces,
+      if (this.rating <= 5) {
+        this.result = {
+          rating: this.rating,
+          comment: this.comment,
+          ...this.dataPlaces,
+        }
+        console.log('RESULT', this.result)
+        this.$store.dispatch('SET_FAVORITEPLACE', this.result)
+        this.SNACKBAR({
+          open: true,
+          timeout: 10000,
+          message: `Lugar salvo em favorito`,
+          color: `danger`,
+        })
+      } else {
+        this.SNACKBAR({
+          open: true,
+          timeout: 10000,
+          message: `Digite um nota de 0 à 5`,
+          color: `danger`,
+        })
       }
-      console.log('RESULT', this.result)
-      this.$store.dispatch('SET_FAVORITEPLACE', this.result)
-      this.SNACKBAR({
-        open: true,
-        timeout: 10000,
-        message: `Lugar salvo em favorito`,
-        color: `danger`,
-      })
     },
   },
 }
@@ -70,6 +81,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
 .btn__save
+  margin-left 15%
   background var(--primary) !important
 
 .box__text
@@ -78,6 +90,8 @@ export default {
   justify-content center
 
 .text__style
+  text-align center
+  margin-left 15%
   max-width 250px
 
 .component__card

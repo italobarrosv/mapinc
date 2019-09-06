@@ -36,8 +36,8 @@ export default {
           console.log(res, 'RESPOSTA')
           this.$store.dispatch('SET_USER', {
             id: 2,
-            email: 'Email no Store',
-            name: 'Nome no Store',
+            email: 'eve.holt@reqres.in',
+            name: 'Eve holt',
             token: res.data.token,
           })
           this.SNACKBAR({

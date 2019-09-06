@@ -31,8 +31,8 @@ export default {
     searchPlace: '',
     places: [],
     obj: {
-      name: 'kevin place',
-      info: 'info sobre o place',
+      name: 'Place title',
+      info: 'Info  place',
     },
     rate: 0,
     comment: '',
