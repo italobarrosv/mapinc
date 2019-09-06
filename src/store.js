@@ -16,13 +16,7 @@ export default new Vuex.Store({
       lng: '',
     },
     lotPlace: '',
-    favoritePlaces: [
-      {
-        id: 21312,
-        name: 'shops',
-        icon: 'incones',
-      },
-    ],
+    favoritePlaces: [],
   },
   mutations: {
     SET_SNACKBAR(state, { message, open, timeout, color }) {

@@ -1,8 +1,8 @@
 <template>
   <div class="component__card">
     <v-card class="mx-auto">
-      <v-card-title>Place</v-card-title>
-      <v-card-text>Informations</v-card-text>
+      <v-card-title>{{ dataPlaces.name }}</v-card-title>
+      <v-card-text>{{ dataPlaces.info }}</v-card-text>
       <div class="box__text">
         <v-text-field
           dark
@@ -18,31 +18,52 @@
         ></v-text-field>
       </div>
       <v-card-actions>
-        <v-btn @click="avaliation" class="btn__save">Salvar como favorito</v-btn>
+        <v-btn @click="avaliation" class="btn__save"
+          >Salvar como favorito</v-btn
+        >
       </v-card-actions>
     </v-card>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   // OBJETIVO MOSTRAR DADOS DO LUGAR UTILIZANDO CARD AVALIAR LUGAR
   components: {},
   props: {
-    type: Object,
-    required: true,
-    default: () => ({})
+    dataPlaces: {
+      type: [Array, Object],
+      required: true,
+      default: () => ({}),
+    },
   },
   data: () => ({
     rating: '',
     comment: '',
+    result: {},
   }),
   name: 'CardPlace',
   methods: {
+    ...mapActions({
+      SNACKBAR: 'SET_SNACKBAR',
+    }),
     avaliation() {
-
-    }
-  }
+      this.result = {
+        rating: this.rating,
+        comment: this.comment,
+        ...this.dataPlaces,
+      }
+      console.log('RESULT', this.result)
+      this.$store.dispatch('SET_FAVORITEPLACE', this.result)
+      this.SNACKBAR({
+        open: true,
+        timeout: 10000,
+        message: `Lugar salvo em favorito`,
+        color: `danger`,
+      })
+    },
+  },
 }
 </script>
 
