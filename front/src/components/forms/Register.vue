@@ -32,6 +32,7 @@
 
 <script>
 import { apiRegisterUser } from '@/services/apiReqres/'
+import { mapActions } from 'vuex'
 export default {
   // OBJETIVO RESGISTRAR USUARIO NA APLICAÇÃO
   components: {},
@@ -45,6 +46,9 @@ export default {
     },
   }),
   methods: {
+    ...mapActions({
+      SNACKBAR: 'SET_SNACKBAR',
+    }),
     registerFunction() {
       apiRegisterUser(this.register)
         .then(res => {
@@ -55,13 +59,20 @@ export default {
             name: 'Resposta nome',
             token: res.data.token,
           })
-          this.$router.push({ name: 'dashboard' })
+          this.SNACKBAR({
+            open: true,
+            timeout: 3000,
+            message: `Registrado com sucesso`,
+            color: `teal`,
+          })
         })
         .catch(err => {
           console.log(err)
         })
         .finally(() => {
-          console.log('finally')
+          setTimeout(() => {
+            window.location.reload()
+          }, 5000)
         })
     },
   },

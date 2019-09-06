@@ -11,29 +11,69 @@
         <v-icon>my_location</v-icon>
       </v-btn>
     </v-toolbar>
+    <v-dialog dark v-model="dialogPlaceCard" max-width="320">
+      <PlaceCard :dialog-place-card="dialogPlaceCard" />
+    </v-dialog>
   </div>
 </template>
 
 <script>
 import { debounce } from 'lodash'
+import { apiGetNearbyPlaces } from '@/services/apiGoogle/'
 export default {
   // OBJETIVO IPUNT PARA BUSCAR O LUGAR ATUAL NA API
-  components: {},
+  components: {
+    PlaceCard: () => import('@/components/dashboard/place/PlaceCard.vue'),
+  },
   name: 'CurrentPlace',
   data: () => ({
+    dialogPlaceCard: false,
     searchPlace: '',
+    places: [],
+    rate: 0,
+    comment: '',
   }),
   methods: {
-    fnCurrentPlace() {
-      console.log('FUNCTION')
+    fnCurrentPlace(searchPlace) {
+      console.log('CURRENT PLACE')
+      if (!searchPlace) {
+        return (this.places = [])
+      }
+      apiGetNearbyPlaces({
+        location: {
+          lat: -8.0397483,
+          lng: -34.9202588,
+          key: 'AIzaSyDEaBim7hB871nYhXS0pMG98rZSoRkoOME',
+        },
+      })
+        .then(res => {
+          console.log(res, 'RESPOSTA')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        .finally(() => {
+          console.log('FINAL')
+        })
+    },
+    fnMarkPlace() {
+      console.log('MARK')
     },
   },
   watch: {
     searchPlace: debounce(function(val) {
-      console.log('SEARCH', val)
+      this.fnCurrentPlace(val)
     }, 600),
   },
-  computed: {},
+  computed: {
+    placeFavorite() {
+      return this.$store.state.favoritePlaces.map(el => ({
+        id: el.placeId,
+        name: el.placeName,
+        icon: el.placeIcon,
+      }))
+    },
+  },
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

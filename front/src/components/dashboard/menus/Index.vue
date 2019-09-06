@@ -38,10 +38,20 @@ export default {
     ],
   }),
   methods: {
+    logout() {
+      this.$store.dispatch('SET_LOGOUT')
+      setTimeout(() => {
+        this.$router.push({ name: 'homepage' })
+        window.location.reload()
+      }, 2000)
+    },
     callComponents(val) {
       switch (val) {
         case 'callComponentProfile':
           this.dialogProfile = true
+          break
+        case 'callComponentLogout':
+          this.logout()
           break
       }
     },

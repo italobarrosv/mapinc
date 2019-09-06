@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from './../../store'
+// import store from './../../store'
 const apiGoogle = () =>
   axios.create({
     baseURL: 'https://maps.googleapis.com/maps/api/',
@@ -17,9 +17,7 @@ const apiGoogle = () =>
 
 // ENDPOINTS -----------------------------------------------------------
 
-// export const apiGetMap = () =>
-//   apiGoogle().post(`js?key=${store.state.keyGoogle}&callback=initMap`)
 export const apiGetNearbyPlaces = data =>
-  apiGoogle().get('/place/nearbysearch', data)
+  apiGoogle().get('/place/nearbysearch', { params: { ...data } })
 export const apiGetDetailPlaces = data =>
   apiGoogle().get('/place/details/', data)

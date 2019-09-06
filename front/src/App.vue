@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" dark>
     <v-snackbar
       :value="GET_SNACKBAR.open"
       :color="GET_SNACKBAR.color"
