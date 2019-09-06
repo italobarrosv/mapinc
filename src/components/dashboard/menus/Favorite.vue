@@ -34,23 +34,8 @@ export default {
     items: [
       {
         icon: true,
+        rating: 1,
         title: 'PLACE 1',
-        rating: '5',
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-      },
-      {
-        title: 'PLACE 2',
-        rating: '5',
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-      },
-      {
-        title: 'PLACE 3',
-        rating: '5',
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-      },
-      {
-        title: 'PLACE 4',
-        rating: '5',
         avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
       },
     ],

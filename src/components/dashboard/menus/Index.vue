@@ -69,8 +69,10 @@ export default {
 <style scoped lang="stylus">
 .icon
   font-size 1.5em
+  color var(--secondary)
 
 .bicon
+  color orange
   font-size 2.3em
 
 .footer__main
